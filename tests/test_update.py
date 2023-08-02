@@ -69,7 +69,7 @@ def test__when_snake_head_hits_corner__pops_on_opposite_side(
     assert data.snake.body.pop() == expected_head_pos
 
 
-PARAMS = [
+SNAKE_HITS_NEW_BODY_PART = [
     (Direction.TOP, [(1, 1)], (1, 0)),
     (Direction.RIGHT, [(1, 1)], (2, 1)),
     (Direction.BOTTOM, [(1, 1)], (1, 2)),
@@ -81,7 +81,7 @@ PARAMS = [
 ]
 
 
-@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", PARAMS)
+@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", SNAKE_HITS_NEW_BODY_PART)
 def test__when_snake_head_hits_new_body_part__updates_snake_length_by_1(
     direction: Direction,
     snake_body_pos: List[Tuple[int, int]],
@@ -100,7 +100,7 @@ def test__when_snake_head_hits_new_body_part__updates_snake_length_by_1(
     assert len_after == len_before + 1, "snake length updates by 1"
 
 
-@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", PARAMS)
+@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", SNAKE_HITS_NEW_BODY_PART)
 def test__when_snake_head_hits_new_body_part__queue_is_not_removed(
     direction: Direction,
     snake_body_pos: List[Tuple[int, int]],
@@ -121,7 +121,7 @@ def test__when_snake_head_hits_new_body_part__queue_is_not_removed(
     assert queue_after == queue_before, "queue is not removed"
 
 
-@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", PARAMS)
+@pytest.mark.parametrize("direction,snake_body_pos,body_part_pos", SNAKE_HITS_NEW_BODY_PART)
 def test__when_snake_head_hits_new_body_part__new_body_part_spawns(
     direction: Direction,
     snake_body_pos: List[Tuple[int, int]],
